@@ -1,0 +1,7 @@
+Flask
+boto3
+python-dotenv==1.0.0
+pillow==10.0.0
+flask-wtf
+email-validator==1.2.1
+WTForms==3.0.1

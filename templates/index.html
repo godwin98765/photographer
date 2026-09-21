@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %} - Home{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <h1>Capture Moments</h1>
+    <button class="cta-button" onclick="window.location.href='{{ url_for('list_photographers') }}'">Book Your Photographer</button>
+</div>
+
+<div class="container">
+    <h2>Welcome to Capture Moments</h2>
+    <p>Find and book professional photographers for weddings, events, portraits and more.</p>
+</div>
+{% endblock %}

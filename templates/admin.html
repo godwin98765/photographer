@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %} - Admin{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h2>Add / Manage Photographers</h2>
+  <form method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input id="name" type="text" name="name" placeholder="Photographer name" required>
+    </div>
+    <div class="form-group">
+      <label for="specialization">Specialization</label>
+      <input id="specialization" type="text" name="specialization" placeholder="e.g. Wedding, Portrait" required>
+    </div>
+    <div class="form-group">
+      <label for="available_dates">Available Dates (comma-separated)</label>
+      <input id="available_dates" type="text" name="available_dates" placeholder="YYYY-MM-DD,YYYY-MM-DD" required>
+    </div>
+    <div class="form-group">
+      <label for="price">Price</label>
+      <input id="price" type="number" step="0.01" name="price" placeholder="Session cost" required>
+    </div>
+    <div class="form-group">
+      <label for="rating">Rating</label>
+      <input id="rating" type="number" step="0.1" name="rating" placeholder="0.0-5.0" required>
+    </div>
+    <div class="form-group">
+      <label for="image">Profile Image</label>
+      <input id="image" type="file" name="image" accept="image/*">
+    </div>
+    <button class="button" type="submit">Add Photographer</button>
+  </form>
+
+  <hr>
+  <h3>Existing Photographers</h3>
+  {% for p in mongo.db.photographers.find() %}
+    <div class="card mb-20">
+      <div class="card-content">
+        <h4>{{ p.name }}</h4>
+        <form id="update-form-{{ p._id }}" onsubmit="event.preventDefault(); updatePhotographer('{{ p._id }}');">
+          <div class="form-group">
+            <label for="name-{{ p._id }}">Name</label>
+            <input id="name-{{ p._id }}" type="text" name="name" value="{{ p.name }}" required>
+          </div>
+          <div class="form-group">
+            <label for="specialization-{{ p._id }}">Specialization</label>
+            <input id="specialization-{{ p._id }}" type="text" name="specialization" value="{{ p.specialization }}" required>
+          </div>
+          <div class="form-group">
+            <label for="dates-{{ p._id }}">Available Dates</label>
+            <input id="dates-{{ p._id }}" type="text" name="available_dates" value="{{ p.available_dates | join(',') }}" required>
+          </div>
+          <div class="form-group">
+            <label for="price-{{ p._id }}">Price</label>
+            <input id="price-{{ p._id }}" type="number" step="0.01" name="price" value="{{ p.price }}" required>
+          </div>
+          <div class="form-group">
+            <label for="rating-{{ p._id }}">Rating</label>
+            <input id="rating-{{ p._id }}" type="number" step="0.1" name="rating" value="{{ p.rating }}" required>
+          </div>
+          <div class="form-group">
+            <label for="image-{{ p._id }}">Profile Image</label>
+            <input id="image-{{ p._id }}" type="file" name="image" accept="image/*">
+          </div>
+          <button class="button" type="submit">Update</button>
+          <button type="button" class="button btn-delete" onclick="deletePhotographer('{{ p._id }}')">Delete</button>
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

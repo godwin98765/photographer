@@ -1,0 +1,93 @@
+{
+  "photographers": [
+    {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "9999999999",
+      "specialization": "To be updated",
+      "available_dates": [],
+      "price": 0,
+      "rating": 0,
+      "image_url": "",
+      "sample_photos": [],
+      "_id": "35184f2d-89b7-44e4-b6f4-94a69ece1c3b"
+    },
+    {
+      "name": "Thoufiq Arafath",
+      "email": "thoufiqthoufiq852@gmail.com",
+      "phone": "8838255084",
+      "specialization": "wedding ",
+      "available_dates": [],
+      "price": 1500.0,
+      "rating": 0,
+      "image_url": "",
+      "sample_photos": [
+        "/static/uploads/IMG-20250215-WA0024.jpg"
+      ],
+      "_id": "6c844aae-4dad-4086-8593-52ad8ad750b4"
+    }
+  ],
+  "bookings": [
+    {
+      "photographer_id": "35184f2d-89b7-44e4-b6f4-94a69ece1c3b",
+      "name": "Test Customer",
+      "email": "test_customer@example.com",
+      "phone": "1234567890",
+      "event_date": "61225-02-20",
+      "event_type": "Wedding",
+      "_id": "570fe9ff-5b01-4b6c-b5e9-087a1cffcf54"
+    },
+    {
+      "photographer_id": "6c844aae-4dad-4086-8593-52ad8ad750b4",
+      "name": "WISTLY GODWIN",
+      "email": "godwin7776@gmail.com",
+      "phone": "godwin7776@gmail.com",
+      "event_date": "2026-02-28",
+      "event_type": "wedding",
+      "_id": "da40089f-d9ac-4814-b075-f3c315d07e23"
+    }
+  ],
+  "users": [
+    {
+      "_id": "45d14711-2234-4c4b-8030-5bad9a09966e",
+      "name": "Admin User",
+      "email": "admin@capturemoments.com",
+      "password_hash": "scrypt:32768:8:1$MbAA34BMkTHNFBKV$4af2c766e98dcedd3cec91be52aed2e601d6c89f6da040fe4d0089fb80f536e06425ff5e2cd1e3ae446d05a3540a387a1e27894ae88fab31e0d55ffcf732343c",
+      "role": "admin"
+    },
+    {
+      "name": "Test Customer",
+      "email": "test_customer@example.com",
+      "phone": "1234567890",
+      "password_hash": "scrypt:32768:8:1$BsHSDTFP8dIwQY5N$da86dec83f8997e1d8af5c0f0697e6b13a57ab560d043bf9c0eb1b34e06f7f8828e4752bf3bbfabb38b3b7eeb4b74453de1e1978ffe686acc77da1e5d65a1ce3",
+      "role": "customer",
+      "_id": "a7988aa0-ab2a-48c6-8805-203d57a203ad"
+    },
+    {
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "9999999999",
+      "password_hash": "scrypt:32768:8:1$vWHVw21rj6I01McF$b03295e1d784e4026007e3e44c23bf9485c87845c4e1879c1eb85508f170a21d5e162b0a181f626edac6b0f53b818bb56fb57ddff1c0c784c8e578c6cf88e836",
+      "role": "photographer",
+      "photographer_id": "35184f2d-89b7-44e4-b6f4-94a69ece1c3b",
+      "_id": "58bd1c28-4238-4fed-bf1d-d3ab1a1a8094"
+    },
+    {
+      "name": "Thoufiq Arafath",
+      "email": "thoufiqthoufiq852@gmail.com",
+      "phone": "8838255084",
+      "password_hash": "scrypt:32768:8:1$WG6uwm4LGaK9LwlT$5bd1212beb544ab9ea47e5595e2f377b5034398083e866168690a825ab177c726424240e34fd2daeaf3e8b7ee56686dde1f8711c86e1f772aad7b6ee737ad401",
+      "role": "photographer",
+      "photographer_id": "6c844aae-4dad-4086-8593-52ad8ad750b4",
+      "_id": "04b9a5a2-5e4c-4997-a52e-56f26c6679f4"
+    },
+    {
+      "name": "WISTLY GODWIN",
+      "email": "godwin7776@gmail.com",
+      "phone": "godwin7776@gmail.com",
+      "password_hash": "scrypt:32768:8:1$9xlHtAlEURPBFYBh$f233e9cfcd8abb2f6cf68be9ff8172d2489ac59e018d0f4cca98a60cb9c604cdad69871ae7078eccb07ba4be9dba261c4edd5f04fb56d815589c3a48fc960437",
+      "role": "customer",
+      "_id": "e5b2c2d4-6e96-4c17-8fd6-9d4ffd769024"
+    }
+  ]
+}

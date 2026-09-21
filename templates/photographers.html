@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %} - Photographers{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="filter-bar">
+    <form method="get" action="">
+      <input type="text" name="search" placeholder="Search by name" value="{{ request.args.get('search', '') }}">
+      <input type="number" name="price" placeholder="Max price" step="0.01" value="{{ request.args.get('price', '') }}">
+      <button class="button" type="submit">Filter</button>
+    </form>
+  </div>
+
+  {% if photographers %}
+  <div class="grid">
+    {% for p in photographers %}
+    <div class="card">
+      {% if p.image_url %}<img src="{{ p.image_url }}" alt="{{ p.name }}">{% endif %}
+      <div class="card-content">
+        <h3>{{ p.name }}</h3>
+        <p>Specialization: {{ p.specialization }}</p>
+        <p>Available Dates: {{ p.available_dates | join(', ') }}</p>
+        <p>Price: ${{ p.price }}</p>
+        <p>Rating: {{ p.rating }}</p>
+
+        {% if p.sample_photos %}
+        <div class="sample-gallery"
+          style="display: flex; gap: 10px; overflow-x: auto; margin-top: 10px; margin-bottom: 20px;">
+          {% for photo in p.sample_photos %}
+          <img src="{{ photo }}" alt="Sample Photo"
+            style="width: 100px; height: 100px; object-fit: cover; border-radius: 8px;">
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        {% if not current_user %}
+        <a href="{{ url_for('login') }}" class="button">Login to Book</a>
+        {% elif current_user.role != 'photographer' %}
+        <button class="button" onclick="document.getElementById('book-form-{{ p._id }}').style.display='block'">Book
+          Now</button>
+
+        <div id="book-form-{{ p._id }}" class="book-form">
+          <form method="post" action="{{ url_for('book') }}">
+            <input type="hidden" name="photographer_id" value="{{ p._id }}">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="event_date">Event Date</label>
+              <input type="date" id="event_date" name="event_date" required>
+            </div>
+            <div class="form-group">
+              <label for="event_type">Event Type</label>
+              <input type="text" id="event_type" name="event_type" required>
+            </div>
+            <button class="button" type="submit">Confirm Booking</button>
+          </form>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p>No photographers found.</p>
+  {% endif %}
+</div>
+{% endblock %}
